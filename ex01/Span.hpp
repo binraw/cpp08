@@ -17,20 +17,9 @@ public:
     Span(const Span &other);
     Span &operator=(const Span &other);
     ~Span();
-    void addNumber( int nb)
-    {
-        unsigned int i = _container.size();
-            if (i > _size)
-            {
-                std::cout << "Container full" << std::endl;
-                return ;
-            }
-                
-        _container.push_back(nb);
-    }
-    
+    void addNumber(int nb);
+    void iteratorRange(int start_range, int end_range);
     int shortestSpan();
-    
     int longestSpan();
 
 };

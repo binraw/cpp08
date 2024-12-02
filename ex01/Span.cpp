@@ -62,3 +62,24 @@ int Span::longestSpan()
     }
     return *max_value;
 }
+
+void Span::addNumber( int nb)
+{
+    unsigned int i = _container.size();
+        if (i > _size)
+        {
+            std::cout << "Container full" << std::endl;
+            return ;
+        }
+            
+    _container.push_back(nb);
+}
+void Span::iteratorRange(int start_range, int end_range)
+{
+    unsigned int i = _container.size();
+    int y = end_range - start_range;
+    if (_size >= (i + y))
+        _container.insert(_container.end(), start_range, end_range);
+    else
+        std::cout << "Container too small" << std::endl;
+}
