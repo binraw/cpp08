@@ -1,8 +1,8 @@
-NAME = find
+NAME = span
 
 
-SRCS_FILE =  main.cpp
-HEADER_FILE = easyfind.hpp
+SRCS_FILE =  main.cpp Span.cpp
+HEADER_FILE = Span.hpp
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
