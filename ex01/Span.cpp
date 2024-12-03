@@ -41,7 +41,7 @@ int Span::shortestSpan()
     while (it_start != it_end)
     {
         if (*min_value > *it_start)
-            min_value = it_start;
+            min_value = it_start;   //changer et utiliser du c++
         it_start++;
     }
     return *min_value;
@@ -57,7 +57,7 @@ int Span::longestSpan()
     while (it_start != it_end)
     {
         if (*max_value < *it_start)
-            max_value = it_start;
+            max_value = it_start;   //changer et utiliser du c++
         it_start++;
     }
     return *max_value;
