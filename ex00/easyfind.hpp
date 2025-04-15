@@ -4,6 +4,7 @@
 #include <iostream>
 #include <algorithm>
 #include <iterator>
+#include "colors.hpp"
 
 template <typename T>
     void easyfind(T container, int nb)
@@ -11,9 +12,9 @@ template <typename T>
         typename T::iterator it;
         it = std::find(container.begin(), container.end(), nb);
         if (it != container.end())
-            std::cout << "Element found in container " << *it << std::endl;
+            std::cout << GREEN << "Element found in container " << *it << RESET << std::endl;
         else
-            std::cout << "Element not found in container" << std::endl;
+            std::cout << RED << "Element not found in container" << RESET << std::endl;
     }
 
 

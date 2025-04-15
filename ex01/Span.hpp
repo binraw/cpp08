@@ -5,6 +5,7 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include "colors.hpp"
 
 class Span
 {
@@ -22,7 +23,17 @@ public:
     int shortestSpan();
     int longestSpan();
 
+    class ShortContainer: public std::exception
+    {
+        virtual const char*	what() const throw();
+    };
+
+    class ContainerFull: public std::exception
+    {
+        virtual const char*	what() const throw();
+    };
 };
+
 
 
 
