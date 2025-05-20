@@ -7,6 +7,20 @@
 #include <vector>
 #include "colors.hpp"
 
+template <typename T,  typename Func>
+	void iter(T &container, Func func)
+	{
+		for(typename T::iterator it = container.begin(); it != container.end(); it++)
+			func(*it);
+	}
+
+template< typename T >
+	void printElement( T& x )
+	{
+	  std::cout << x << std::endl;
+	  return;
+	}
+
 class Span
 {
 private:

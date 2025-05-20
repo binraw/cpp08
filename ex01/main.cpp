@@ -7,6 +7,7 @@ int main(void)
     Span testmax(100000);
     Span testcopy(testmax);
 
+
     std::cout << YELLOW << "TEST NO VALUE : " << RESET << std::endl;
     try
     {
@@ -14,7 +15,7 @@ int main(void)
     }
     catch(const std::exception& e)
     {
-        std::cerr << RED << e.what() << RESET << '\n';
+        std::cout << RED << e.what() << RESET << '\n';
     }
 
     try
@@ -23,7 +24,7 @@ int main(void)
     }
     catch(const std::exception& e)
     {
-        std::cerr << RED << e.what() << RESET << '\n';
+        std::cout << RED << e.what() << RESET << '\n';
     }
     
     std::cout << YELLOW << "TEST ADD 40 NUMBERS IN CONTAINER SIZE 10 : " << RESET << std::endl;
@@ -33,7 +34,7 @@ int main(void)
     }
     catch(const std::exception& e)
     {
-        std::cerr << RED << e.what() << RESET << '\n';
+        std::cout << RED << e.what() << RESET << '\n';
     }
     std::cout << YELLOW << "TEST ADD 8 NUMBERS IN CONTAINER SIZE 10 : " << RESET << std::endl;
     try
@@ -43,7 +44,7 @@ int main(void)
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cout << e.what() << '\n';
     }
     std::cout << YELLOW << "TEST ADD 1 NUMBER WITH ITER IN CONTAINER : " << RESET << std::endl;
     try
@@ -53,7 +54,7 @@ int main(void)
     }
     catch(const std::exception& e)
     {
-        std::cerr << RED << e.what() << RESET << '\n';
+        std::cout << RED << e.what() << RESET << '\n';
     }
     std::cout << YELLOW << "TEST SHOW shortest and longest: " << RESET << std::endl;
     try
@@ -63,7 +64,7 @@ int main(void)
     }
     catch(const std::exception& e)
     {
-        std::cerr << RED << e.what() << RESET << '\n';
+        std::cout << RED << e.what() << RESET << '\n';
     }
     std::cout << YELLOW << "TEST ADD 100 000 NUMBERS IN CONTAINER SIZE 100 000 : " << RESET << std::endl;
     try
@@ -76,7 +77,7 @@ int main(void)
     }
     catch(const std::exception& e)
     {
-        std::cerr << RED << e.what() << RESET << '\n';
+        std::cout << RED << e.what() << RESET << '\n';
     }
     std::cout << YELLOW << "TEST ADD 2 NUMBERS IN CONTAINER SIZE 10 : " << RESET << std::endl;
     try
@@ -87,7 +88,16 @@ int main(void)
     }
     catch(const std::exception& e)
     {
-        std::cerr << RED << e.what() << RESET << '\n';
+        std::cout << RED << e.what() << RESET << '\n';
     }
+
+
+    Span sp = Span(5);
+    sp.addNumber(6);
+    sp.addNumber(3);
+    sp.addNumber(17);
+    sp.addNumber(9);
+    sp.addNumber(11);
+std::cout << sp.shortestSpan() << std::endl;
     return (0);
 }
