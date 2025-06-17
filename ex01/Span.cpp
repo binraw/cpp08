@@ -31,50 +31,14 @@ Span &Span::operator=(const Span &other)
     return *this;
 }
 
-void recursiveSort(std::vector<int>& arr) 
-{
-    if (arr.size() <= 1) 
-        return;
 
-
-    size_t mid = arr.size() / 2;
-    std::vector<int> left(arr.begin(), arr.begin() + mid);
-    std::vector<int> right(arr.begin() + mid, arr.end());
-
-
-    recursiveSort(left);
-    recursiveSort(right);
-
-
-    size_t i = 0, j = 0, k = 0;
-    while (i < left.size() && j < right.size()) 
-    {
-        if (left[i] <= right[j]) 
-        {
-            arr[k++] = left[i++];
-        } 
-        else 
-        {
-            arr[k++] = right[j++];
-        }
-    }
-
-    while (i < left.size()) 
-    {
-        arr[k++] = left[i++];
-    }
-    while (j < right.size()) 
-    {
-        arr[k++] = right[j++];
-    }
-}
 
 int Span::shortestSpan()
 {
     if (_container.size() < 2)
         throw ShortContainer();
 
-    recursiveSort(_container);
+    std::sort(_container.begin(), _container.end());
     int range = 2147483647;
     for (std::vector<int>::iterator it = _container.begin() + 1; it != _container.end(); it++)
     {
