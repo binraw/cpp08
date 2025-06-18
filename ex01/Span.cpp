@@ -33,38 +33,34 @@ Span &Span::operator=(const Span &other)
 
 
 
-int Span::shortestSpan()
+int Span::shortestSpan() 
 {
     if (_container.size() < 2)
         throw ShortContainer();
 
     std::sort(_container.begin(), _container.end());
     int range = 2147483647;
-    for (std::vector<int>::iterator it = _container.begin() + 1; it != _container.end(); it++)
-    {
-        int old_value = *(it - 1);
-        int value = *it;
-        int old_range;
 
-        for (int i = 0; old_value <= value; i++)
+    for (size_t i = 1; i < _container.size(); ++i) 
+    {
+        int diff = _container[i] - _container[i - 1];
+        if (diff < range) 
         {
-            old_value++;
-            old_range = i;
+            range = diff;
         }
-        if (range > old_range)
-            range = old_range;
     }
     return range;
 }
 
-int Span::longestSpan()
+int Span::longestSpan() 
 {
     if (_container.size() < 2)
         throw ShortContainer();
 
     int max_value = *std::max_element(_container.begin(), _container.end());
-    return max_value;
+    int min_value = *std::min_element(_container.begin(), _container.end());
 
+    return max_value - min_value;
 }
 
 void Span::addNumber( int nb)
@@ -74,28 +70,29 @@ void Span::addNumber( int nb)
             throw ContainerFull();
     _container.push_back(nb);
 }
+
 void Span::iteratorRange(int start_range, int end_range)
 {
     size_t count = std::abs(end_range - start_range) + 1;
-    if (_size >= count)
+
+   
+    if (_container.size() + count > _size)
+        throw ContainerFull();
+
+    if (start_range <= end_range)
     {
-        if (start_range >= end_range)
+        for (int i = start_range; i <= end_range; i++)
         {
-            for (int i = start_range; i != end_range; i--)
-            {
-                _container.push_back(i);
-            }
-        }
-        else
-        {
-            for (int i = start_range; i != end_range; i++)
-            {
-                _container.push_back(i);
-            }
+            _container.push_back(i);
         }
     }
     else
-        throw ContainerFull();
+    {
+        for (int i = start_range; i >= end_range; i--)
+        {
+            _container.push_back(i);
+        }
+    }
 }
 
 const char* Span::ShortContainer::what() const throw ()
